@@ -1,22 +1,27 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
     <title>A Secret Birthday Surprise 💕</title>
-    
+
     <!-- SEO & Social Meta -->
     <meta name="description" content="A secret romantic birthday surprise created especially for you 💕">
     <meta name="theme-color" content="#FFE8EE">
-    
+
     <!-- Google Fonts: Handwritten & Modern Mobile UI Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600;700&family=Outfit:wght@400;500;600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
-    
+    <link
+        href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600;700&family=Outfit:wght@400;500;600;700&family=Poppins:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
+
     <!-- Stylesheet -->
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.css?v=2.0">
 </head>
+
 <body>
 
     <!-- Background Animated Canvas (Floating Hearts & Sparkles) -->
@@ -42,7 +47,7 @@
         <!-- ========================================== -->
         <section id="step-passcode" class="step-section active">
             <div id="passcode-card" class="card glass-card passcode-card">
-                
+
                 <div class="passcode-header">
                     <span class="passcode-icon">🔐🐼</span>
                     <h1 class="passcode-title">Enter Secret Passcode 💕</h1>
@@ -65,7 +70,7 @@
                 </div>
 
                 <!-- Cute Mobile Numpad Grid -->
-                <div class="numpad-grid">
+                <div class="numpad-grid" style="display: grid !important; grid-template-columns: repeat(3, 1fr) !important; gap: 12px !important; max-width: 280px !important; width: 100% !important; margin: 24px auto 0 auto !important; box-sizing: border-box !important;">
                     <button class="numpad-btn" data-val="1" type="button">1</button>
                     <button class="numpad-btn" data-val="2" type="button">2</button>
                     <button class="numpad-btn" data-val="3" type="button">3</button>
@@ -78,9 +83,11 @@
                     <button class="numpad-btn" data-val="8" type="button">8</button>
                     <button class="numpad-btn" data-val="9" type="button">9</button>
 
-                    <button class="numpad-btn numpad-action" id="btn-numpad-del" data-action="delete" type="button" aria-label="Delete">⌫</button>
+                    <button class="numpad-btn numpad-action" id="btn-numpad-del" data-action="delete" type="button"
+                        aria-label="Delete">⌫</button>
                     <button class="numpad-btn" data-val="0" type="button">0</button>
-                    <button class="numpad-btn numpad-action numpad-submit" id="btn-numpad-enter" data-action="submit" type="button" aria-label="Submit">💖</button>
+                    <button class="numpad-btn numpad-action numpad-submit" id="btn-numpad-enter" data-action="submit"
+                        type="button" aria-label="Submit">💖</button>
                 </div>
 
             </div>
@@ -91,7 +98,7 @@
         <!-- ========================================== -->
         <section id="step-intro" class="step-section hidden">
             <div class="intro-container">
-                
+
                 <!-- Speech Bubble Above Panda -->
                 <div id="intro-speech-bubble" class="speech-bubble hidden">
                     <p id="speech-text" class="speech-text">Hi My Love! 🐼💕</p>
@@ -103,27 +110,34 @@
                         <defs>
                             <!-- Liquid Gradient -->
                             <linearGradient id="liquidGrad" x1="0%" y1="0%" x2="0%" y2="100%">
-                                <stop offset="0%" stop-color="#FF4F81"/>
-                                <stop offset="100%" stop-color="#FF6F91"/>
+                                <stop offset="0%" stop-color="#FF4F81" />
+                                <stop offset="100%" stop-color="#FF6F91" />
                             </linearGradient>
 
                             <!-- Clip path defined by heart outline -->
                             <clipPath id="heartShapeClip">
-                                <path d="M100,165 C100,165 25,115 25,65 C25,35 48,15 75,15 C90,15 100,26 100,26 C100,26 110,15 125,15 C152,15 175,35 175,65 C175,115 100,165 100,165 Z"/>
+                                <path
+                                    d="M100,165 C100,165 25,115 25,65 C25,35 48,15 75,15 C90,15 100,26 100,26 C100,26 110,15 125,15 C152,15 175,35 175,65 C175,115 100,165 100,165 Z" />
                             </clipPath>
                         </defs>
 
                         <!-- Heart Background Area -->
-                        <path d="M100,165 C100,165 25,115 25,65 C25,35 48,15 75,15 C90,15 100,26 100,26 C100,26 110,15 125,15 C152,15 175,35 175,65 C175,115 100,165 100,165 Z" fill="rgba(255, 232, 238, 0.7)" stroke="#FF4F81" stroke-width="5" stroke-linejoin="round"/>
+                        <path
+                            d="M100,165 C100,165 25,115 25,65 C25,35 48,15 75,15 C90,15 100,26 100,26 C100,26 110,15 125,15 C152,15 175,35 175,65 C175,115 100,165 100,165 Z"
+                            fill="rgba(255, 232, 238, 0.7)" stroke="#FF4F81" stroke-width="5" stroke-linejoin="round" />
 
                         <!-- Filling Liquid clipped inside Heart -->
                         <g clip-path="url(#heartShapeClip)">
-                            <rect id="liquid-fill-rect" x="0" y="180" width="200" height="200" fill="url(#liquidGrad)"/>
-                            <path id="liquid-wave" class="liquid-wave" d="M0,180 Q50,173 100,180 T200,180 L200,200 L0,200 Z" fill="#FF4F81" opacity="0.7"/>
+                            <rect id="liquid-fill-rect" x="0" y="180" width="200" height="200"
+                                fill="url(#liquidGrad)" />
+                            <path id="liquid-wave" class="liquid-wave"
+                                d="M0,180 Q50,173 100,180 T200,180 L200,200 L0,200 Z" fill="#FF4F81" opacity="0.7" />
                         </g>
-                        
+
                         <!-- Heart Border Highlight -->
-                        <path d="M100,165 C100,165 25,115 25,65 C25,35 48,15 75,15 C90,15 100,26 100,26 C100,26 110,15 125,15 C152,15 175,35 175,65 C175,115 100,165 100,165 Z" fill="none" stroke="#FF4F81" stroke-width="6" stroke-linejoin="round"/>
+                        <path
+                            d="M100,165 C100,165 25,115 25,65 C25,35 48,15 75,15 C90,15 100,26 100,26 C100,26 110,15 125,15 C152,15 175,35 175,65 C175,115 100,165 100,165 Z"
+                            fill="none" stroke="#FF4F81" stroke-width="6" stroke-linejoin="round" />
                     </svg>
 
                     <!-- Unlocked Badge Text -->
@@ -154,7 +168,7 @@
         <!-- ========================================== -->
         <section id="step-welcome" class="step-section hidden">
             <div class="card glass-card welcome-card">
-                
+
                 <!-- Cute Animated Panda GIF -->
                 <div class="panda-wrapper welcome-panda">
                     <img src="assets/panda/sayhi.gif" alt="Say Hi Panda" class="panda-gif welcome-panda-gif">
@@ -175,7 +189,7 @@
         <!-- ========================================== -->
         <section id="step-questions" class="step-section hidden">
             <div id="question-card" class="card glass-card question-card">
-                
+
                 <!-- Progress Indicator -->
                 <div class="progress-header">
                     <span id="question-progress-text" class="progress-text">Question 1 of 3</span>
@@ -188,17 +202,20 @@
 
                 <!-- Panda Reaction Element -->
                 <div class="question-panda-box">
-                    <img id="eating-panda-img" src="assets/panda/eating_panda.gif" alt="Eating Panda" class="panda-gif question-eating-gif">
+                    <img id="eating-panda-img" src="assets/panda/eating_panda.gif" alt="Eating Panda"
+                        class="panda-gif question-eating-gif">
                 </div>
 
                 <!-- Dynamic Question Container -->
                 <div class="question-body">
                     <h2 id="question-title" class="question-title">What is your name? 💕</h2>
-                    
+
                     <form id="question-form" autocomplete="off" onsubmit="return false;">
                         <div class="input-group">
-                            <input type="text" id="answer-input" class="romantic-input" placeholder="Type your answer here..." autofocus required autocomplete="off">
-                            <button type="submit" id="btn-submit-answer" class="btn btn-submit" aria-label="Submit Answer">
+                            <input type="text" id="answer-input" class="romantic-input"
+                                placeholder="Type your answer here..." autofocus required autocomplete="off">
+                            <button type="submit" id="btn-submit-answer" class="btn btn-submit"
+                                aria-label="Submit Answer">
                                 <span>💖</span>
                             </button>
                         </div>
@@ -218,40 +235,44 @@
         <!-- ========================================== -->
         <section id="step-celebration" class="step-section modal-step hidden">
             <div class="card glass-card celebration-card scale-in">
-                
+
                 <!-- Celebration Panda & Balloons -->
                 <div class="celebration-header">
                     <div class="balloon balloon-left">🎈</div>
                     <div class="panda-wrapper celebration-panda">
                         <svg class="panda-svg" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
                             <!-- Ears -->
-                            <circle cx="50" cy="50" r="28" fill="#2E2E38"/>
-                            <circle cx="150" cy="50" r="28" fill="#2E2E38"/>
-                            <circle cx="50" cy="50" r="16" fill="#FFB7C5" opacity="0.7"/>
-                            <circle cx="150" cy="50" r="16" fill="#FFB7C5" opacity="0.7"/>
+                            <circle cx="50" cy="50" r="28" fill="#2E2E38" />
+                            <circle cx="150" cy="50" r="28" fill="#2E2E38" />
+                            <circle cx="50" cy="50" r="16" fill="#FFB7C5" opacity="0.7" />
+                            <circle cx="150" cy="50" r="16" fill="#FFB7C5" opacity="0.7" />
                             <!-- Head -->
-                            <ellipse cx="100" cy="105" rx="75" ry="65" fill="#FFFFFF" stroke="#EAEAEA" stroke-width="2"/>
+                            <ellipse cx="100" cy="105" rx="75" ry="65" fill="#FFFFFF" stroke="#EAEAEA"
+                                stroke-width="2" />
                             <!-- Eye Patches -->
-                            <ellipse cx="70" cy="100" rx="20" ry="24" fill="#2E2E38" transform="rotate(-10 70 100)"/>
-                            <ellipse cx="130" cy="100" rx="20" ry="24" fill="#2E2E38" transform="rotate(10 130 100)"/>
+                            <ellipse cx="70" cy="100" rx="20" ry="24" fill="#2E2E38" transform="rotate(-10 70 100)" />
+                            <ellipse cx="130" cy="100" rx="20" ry="24" fill="#2E2E38" transform="rotate(10 130 100)" />
                             <!-- Winking / Happy Eyes -->
-                            <path d="M62,100 Q70,92 78,100" fill="none" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round"/>
-                            <path d="M122,100 Q130,92 138,100" fill="none" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round"/>
+                            <path d="M62,100 Q70,92 78,100" fill="none" stroke="#FFFFFF" stroke-width="4"
+                                stroke-linecap="round" />
+                            <path d="M122,100 Q130,92 138,100" fill="none" stroke="#FFFFFF" stroke-width="4"
+                                stroke-linecap="round" />
                             <!-- Blush -->
-                            <ellipse cx="50" cy="116" rx="14" ry="8" fill="#FF4F81" opacity="0.85"/>
-                            <ellipse cx="150" cy="116" rx="14" ry="8" fill="#FF4F81" opacity="0.85"/>
+                            <ellipse cx="50" cy="116" rx="14" ry="8" fill="#FF4F81" opacity="0.85" />
+                            <ellipse cx="150" cy="116" rx="14" ry="8" fill="#FF4F81" opacity="0.85" />
                             <!-- Nose & Happy Open Mouth -->
-                            <ellipse cx="100" cy="110" rx="7" ry="5" fill="#2E2E38"/>
-                            <path d="M90,118 Q100,135 110,118 Z" fill="#FF6F91"/>
+                            <ellipse cx="100" cy="110" rx="7" ry="5" fill="#2E2E38" />
+                            <path d="M90,118 Q100,135 110,118 Z" fill="#FF6F91" />
                             <!-- Crown / Birthday Hat -->
-                            <polygon points="80,48 100,15 120,48 110,48 100,28 90,48" fill="#FFD700"/>
-                            <circle cx="100" cy="15" r="5" fill="#FF4F81"/>
+                            <polygon points="80,48 100,15 120,48 110,48 100,28 90,48" fill="#FFD700" />
+                            <circle cx="100" cy="15" r="5" fill="#FF4F81" />
                         </svg>
                     </div>
                     <div class="balloon balloon-right">🎈</div>
                 </div>
 
-                <h1 id="celebration-title" class="celebration-title"><span class="title-main">Happy Birthday My Love...</span><br><span class="title-sub">i love you more than my world 🌍💕😘🫶</span></h1>
+                <h1 id="celebration-title" class="celebration-title"><span class="title-main">Happy Birthday My
+                        Love...</span><br><span class="title-sub">i love you more than my world 🌍💕😘🫶</span></h1>
                 <p class="celebration-subtitle">Your little surprise is finally unlocked... 🐼💗</p>
 
                 <button id="btn-open-heart" class="btn btn-primary pulse-btn btn-lg" type="button">
@@ -271,7 +292,7 @@
                         <h2 id="letter-heading" class="letter-heading">To My Chuti Manikeee 💕</h2>
                         <div class="divider-line"><span>🌸</span></div>
                     </div>
-                    
+
                     <div id="letter-content" class="letter-content">
                         <!-- Filled dynamically from script.js CONFIG -->
                     </div>
@@ -290,11 +311,12 @@
         <!-- ========================================== -->
         <section id="step-panda-gateway" class="step-section hidden">
             <div class="card glass-card gateway-card">
-                
+
                 <p class="gateway-hint">Our little world is waiting... 🐼❤️</p>
 
                 <!-- Interactive CSS Animated Panda Holding Board -->
-                <div id="interactive-panda" class="interactive-panda-container" role="button" tabindex="0" aria-label="Tap the panda to open memories">
+                <div id="interactive-panda" class="interactive-panda-container" role="button" tabindex="0"
+                    aria-label="Tap the panda to open memories">
                     <div class="floating-hearts-around">
                         <span class="mini-heart h1">💕</span>
                         <span class="mini-heart h2">💖</span>
@@ -321,7 +343,7 @@
         <!-- ========================================== -->
         <section id="step-gallery" class="step-section hidden">
             <div class="gallery-container">
-                
+
                 <header class="gallery-header">
                     <h2 class="gallery-title">Our Precious Memories 🐼❤️</h2>
                     <p class="gallery-subtitle">Every photo & video tells our cute little love story...</p>
@@ -345,12 +367,12 @@
     <!-- ========================================== -->
     <div id="lightbox-modal" class="lightbox-modal hidden" aria-hidden="true" role="dialog">
         <div class="lightbox-overlay" id="lightbox-overlay"></div>
-        
+
         <div class="lightbox-content">
             <button id="lightbox-close" class="lightbox-close" aria-label="Close viewer">
                 <span>← Back to Memories</span>
             </button>
-            
+
             <div class="lightbox-media-wrapper">
                 <img id="lightbox-img" class="lightbox-img hidden" src="" alt="Memory Photo">
                 <video id="lightbox-video" class="lightbox-video hidden" controls playsinline preload="metadata">
@@ -358,7 +380,7 @@
                     Your browser does not support the video tag.
                 </video>
             </div>
-            
+
             <div id="lightbox-caption" class="lightbox-caption"></div>
         </div>
     </div>
@@ -366,4 +388,5 @@
     <!-- Application Script -->
     <script src="script.js"></script>
 </body>
+
 </html>

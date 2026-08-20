@@ -1253,50 +1253,55 @@ body {
 
 /* Cute Numpad Grid */
 .numpad-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 12px;
-    max-width: 280px;
-    margin: 24px auto 0 auto;
+    display: grid !important;
+    grid-template-columns: repeat(3, 1fr) !important;
+    gap: 12px !important;
+    max-width: 280px !important;
+    width: 100% !important;
+    margin: 24px auto 0 auto !important;
+    box-sizing: border-box !important;
 }
 
 .numpad-btn {
-    height: 56px;
-    min-height: 56px;
-    border-radius: 28px;
-    border: 1.5px solid var(--card-border);
-    background: rgba(255, 255, 255, 0.9);
-    font-family: var(--font-heading);
-    font-size: 1.35rem;
-    font-weight: 600;
-    color: var(--text-main);
-    cursor: pointer;
-    box-shadow: 0 4px 12px rgba(74, 39, 50, 0.05);
-    transition: var(--transition-fast);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    user-select: none;
-    touch-action: manipulation;
+    height: 56px !important;
+    min-height: 56px !important;
+    width: 100% !important;
+    border-radius: 28px !important;
+    border: 1.5px solid var(--card-border) !important;
+    background: rgba(255, 255, 255, 0.95) !important;
+    font-family: var(--font-heading) !important;
+    font-size: 1.35rem !important;
+    font-weight: 600 !important;
+    color: var(--text-main) !important;
+    cursor: pointer !important;
+    box-shadow: 0 4px 12px rgba(74, 39, 50, 0.08) !important;
+    transition: var(--transition-fast) !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    user-select: none !important;
+    -webkit-user-select: none !important;
+    touch-action: manipulation !important;
+    box-sizing: border-box !important;
 }
 
 .numpad-btn:active {
-    transform: scale(0.92);
-    background: var(--accent-blush);
-    border-color: var(--deep-pink);
-    color: var(--deep-pink);
+    transform: scale(0.92) !important;
+    background: var(--accent-blush) !important;
+    border-color: var(--deep-pink) !important;
+    color: var(--deep-pink) !important;
 }
 
 .numpad-action {
-    background: rgba(255, 232, 238, 0.6);
-    color: var(--text-muted);
-    font-size: 1.2rem;
+    background: rgba(255, 232, 238, 0.8) !important;
+    color: var(--text-muted) !important;
+    font-size: 1.2rem !important;
 }
 
 .numpad-submit {
-    background: linear-gradient(135deg, var(--primary-pink), var(--deep-pink));
-    color: #FFFFFF;
-    box-shadow: 0 4px 14px rgba(255, 79, 129, 0.35);
+    background: linear-gradient(135deg, var(--primary-pink), var(--deep-pink)) !important;
+    color: #FFFFFF !important;
+    box-shadow: 0 4px 14px rgba(255, 79, 129, 0.35) !important;
 }
 
 .welcome-panda-gif {
