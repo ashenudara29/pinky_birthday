@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <title>A Secret Birthday Surprise 💕</title>
+    
+    <!-- SEO & Social Meta -->
+    <meta name="description" content="A secret romantic birthday surprise created especially for my Chuti Manikeee 💕">
+    <meta name="theme-color" content="#FFE8EE">
+    
+    <!-- Google Fonts: Handwritten & Modern Mobile UI Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600;700&family=Outfit:wght@400;500;600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Stylesheet -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Background Animated Canvas (Floating Hearts & Sparkles) -->
+    <canvas id="particle-canvas"></canvas>
+    <!-- Celebration Confetti Canvas -->
+    <canvas id="confetti-canvas"></canvas>
+
+    <!-- Global Music Player Control -->
+    <div id="music-control" class="music-control hidden" aria-label="Toggle music" role="button" tabindex="0">
+        <div class="music-bars">
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
+        </div>
+        <span id="music-icon" class="music-icon">🎵</span>
+    </div>
+
+    <!-- MAIN APP CONTAINER -->
+    <main class="app-container">
+
+        <!-- ========================================== -->
+        <!-- STEP 1 — SECRET WELCOME SCREEN             -->
+        <!-- ========================================== -->
+        <section id="step-welcome" class="step-section active">
+            <div class="card glass-card welcome-card">
+                
+                <!-- Cute SVG Panda Illustration -->
+                <div class="panda-wrapper welcome-panda">
+                    <svg class="panda-svg" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+                        <!-- Ears -->
+                        <circle cx="50" cy="50" r="28" fill="#2E2E38"/>
+                        <circle cx="150" cy="50" r="28" fill="#2E2E38"/>
+                        <circle cx="50" cy="50" r="16" fill="#FFB7C5" opacity="0.6"/>
+                        <circle cx="150" cy="50" r="16" fill="#FFB7C5" opacity="0.6"/>
+                        <!-- Head -->
+                        <ellipse cx="100" cy="105" rx="75" ry="65" fill="#FFFFFF" stroke="#EAEAEA" stroke-width="2"/>
+                        <!-- Eye Patches -->
+                        <ellipse cx="70" cy="100" rx="20" ry="24" fill="#2E2E38" transform="rotate(-10 70 100)"/>
+                        <ellipse cx="130" cy="100" rx="20" ry="24" fill="#2E2E38" transform="rotate(10 130 100)"/>
+                        <!-- Eyes -->
+                        <circle cx="72" cy="98" r="7" fill="#FFFFFF"/>
+                        <circle cx="128" cy="98" r="7" fill="#FFFFFF"/>
+                        <circle cx="74" cy="96" r="3" fill="#2E2E38"/>
+                        <circle cx="126" cy="96" r="3" fill="#2E2E38"/>
+                        <circle cx="71" cy="95" r="1.5" fill="#FFFFFF"/>
+                        <circle cx="129" cy="95" r="1.5" fill="#FFFFFF"/>
+                        <!-- Blush Cheeks -->
+                        <ellipse cx="52" cy="118" rx="12" ry="7" fill="#FF8CA3" opacity="0.75"/>
+                        <ellipse cx="148" cy="118" rx="12" ry="7" fill="#FF8CA3" opacity="0.75"/>
+                        <!-- Nose & Mouth -->
+                        <ellipse cx="100" cy="112" rx="8" ry="6" fill="#2E2E38"/>
+                        <path d="M93,120 Q100,127 107,120" fill="none" stroke="#2E2E38" stroke-width="3" stroke-linecap="round"/>
+                        <!-- Floating Heart in Paw -->
+                        <path class="heart-pulse" d="M100,145 C100,145 88,135 88,127 C88,122 92,118 97,118 C100,118 100,121 100,121 C100,121 100,118 103,118 C108,118 112,122 112,127 C112,135 100,145 100,145 Z" fill="#FF4F81"/>
+                    </svg>
+                </div>
+
+                <h1 class="romantic-title">Hey Chuti Manikeee... 💕</h1>
+                <p class="subtitle">I have a little surprise for you... 🐼💗</p>
+                <p class="subtext-notice">But first... I need to make sure it's really you 👀</p>
+
+                <button id="btn-start" class="btn btn-primary pulse-btn" type="button">
+                    <span>Start the Surprise 💕</span>
+                </button>
+            </div>
+        </section>
+
+        <!-- ========================================== -->
+        <!-- STEP 2 — QUESTION SYSTEM                  -->
+        <!-- ========================================== -->
+        <section id="step-questions" class="step-section hidden">
+            <div id="question-card" class="card glass-card question-card">
+                
+                <!-- Progress Indicator -->
+                <div class="progress-header">
+                    <span id="question-progress-text" class="progress-text">Question 1 of 3</span>
+                    <div class="dots-wrapper">
+                        <span id="dot-1" class="dot active"></span>
+                        <span id="dot-2" class="dot"></span>
+                        <span id="dot-3" class="dot"></span>
+                    </div>
+                </div>
+
+                <!-- Panda Reaction Element -->
+                <div class="question-panda-box">
+                    <span id="panda-emoji" class="panda-emoji">🐼</span>
+                </div>
+
+                <!-- Dynamic Question Container -->
+                <div class="question-body">
+                    <h2 id="question-title" class="question-title">What is your name? 💕</h2>
+                    
+                    <form id="question-form" autocomplete="off" onsubmit="return false;">
+                        <div class="input-group">
+                            <input type="text" id="answer-input" class="romantic-input" placeholder="Type your answer here..." autofocus required autocomplete="off">
+                            <button type="submit" id="btn-submit-answer" class="btn btn-submit" aria-label="Submit Answer">
+                                <span>💖</span>
+                            </button>
+                        </div>
+                    </form>
+
+                    <!-- Error Toast / Feedback Message -->
+                    <div id="error-message" class="error-toast hidden" role="alert">
+                        <span id="error-text">Hmmmm... try again Chuti Manikeee 🥺💕</span>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- ========================================== -->
+        <!-- STEP 3 — BIRTHDAY UNLOCK CELEBRATION       -->
+        <!-- ========================================== -->
+        <section id="step-celebration" class="step-section modal-step hidden">
+            <div class="card glass-card celebration-card scale-in">
+                
+                <!-- Celebration Panda & Balloons -->
+                <div class="celebration-header">
+                    <div class="balloon balloon-left">🎈</div>
+                    <div class="panda-wrapper celebration-panda">
+                        <svg class="panda-svg" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+                            <!-- Ears -->
+                            <circle cx="50" cy="50" r="28" fill="#2E2E38"/>
+                            <circle cx="150" cy="50" r="28" fill="#2E2E38"/>
+                            <circle cx="50" cy="50" r="16" fill="#FFB7C5" opacity="0.7"/>
+                            <circle cx="150" cy="50" r="16" fill="#FFB7C5" opacity="0.7"/>
+                            <!-- Head -->
+                            <ellipse cx="100" cy="105" rx="75" ry="65" fill="#FFFFFF" stroke="#EAEAEA" stroke-width="2"/>
+                            <!-- Eye Patches -->
+                            <ellipse cx="70" cy="100" rx="20" ry="24" fill="#2E2E38" transform="rotate(-10 70 100)"/>
+                            <ellipse cx="130" cy="100" rx="20" ry="24" fill="#2E2E38" transform="rotate(10 130 100)"/>
+                            <!-- Winking / Happy Eyes -->
+                            <path d="M62,100 Q70,92 78,100" fill="none" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round"/>
+                            <path d="M122,100 Q130,92 138,100" fill="none" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round"/>
+                            <!-- Blush -->
+                            <ellipse cx="50" cy="116" rx="14" ry="8" fill="#FF4F81" opacity="0.85"/>
+                            <ellipse cx="150" cy="116" rx="14" ry="8" fill="#FF4F81" opacity="0.85"/>
+                            <!-- Nose & Happy Open Mouth -->
+                            <ellipse cx="100" cy="110" rx="7" ry="5" fill="#2E2E38"/>
+                            <path d="M90,118 Q100,135 110,118 Z" fill="#FF6F91"/>
+                            <!-- Crown / Birthday Hat -->
+                            <polygon points="80,48 100,15 120,48 110,48 100,28 90,48" fill="#FFD700"/>
+                            <circle cx="100" cy="15" r="5" fill="#FF4F81"/>
+                        </svg>
+                    </div>
+                    <div class="balloon balloon-right">🎈</div>
+                </div>
+
+                <h1 id="celebration-title" class="celebration-title">Happy Birthday Chuti Manikeeeee💕😘😘🫶</h1>
+                <p class="celebration-subtitle">Your little surprise is finally unlocked... 🐼💗</p>
+
+                <button id="btn-open-heart" class="btn btn-primary pulse-btn btn-lg" type="button">
+                    <span>Open My Heart 💌</span>
+                </button>
+            </div>
+        </section>
+
+        <!-- ========================================== -->
+        <!-- STEP 4 — LOVE LETTER                       -->
+        <!-- ========================================== -->
+        <section id="step-letter" class="step-section hidden">
+            <div class="envelope-wrapper">
+                <div class="card letter-card paper-texture">
+                    <div class="letter-header">
+                        <span class="letter-panda-icon">🐼💖</span>
+                        <h2 id="letter-heading" class="letter-heading">To My Chuti Manikeee 💕</h2>
+                        <div class="divider-line"><span>🌸</span></div>
+                    </div>
+                    
+                    <div id="letter-content" class="letter-content">
+                        <!-- Filled dynamically from script.js CONFIG -->
+                    </div>
+
+                    <div class="letter-footer">
+                        <button id="btn-continue-memories" class="btn btn-primary btn-full" type="button">
+                            <span>Continue to Our Memories 🐼❤️</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ========================================== -->
+        <!-- STEP 5 — MAIN SECRET PANDA GATEWAY         -->
+        <!-- ========================================== -->
+        <section id="step-panda-gateway" class="step-section hidden">
+            <div class="card glass-card gateway-card">
+                
+                <p class="gateway-hint">Our little world is waiting... 🐼❤️</p>
+
+                <!-- Interactive CSS Animated Panda Holding Board -->
+                <div id="interactive-panda" class="interactive-panda-container" role="button" tabindex="0" aria-label="Tap the panda to open memories">
+                    <div class="floating-hearts-around">
+                        <span class="mini-heart h1">💕</span>
+                        <span class="mini-heart h2">💖</span>
+                        <span class="mini-heart h3">💗</span>
+                    </div>
+
+                    <!-- Interactive Animated Panda -->
+                    <div class="panda-character">
+                        <svg class="panda-svg gateway-panda-svg" viewBox="0 0 200 240" xmlns="http://www.w3.org/2000/svg">
+                            <!-- Ears -->
+                            <circle cx="45" cy="45" r="26" fill="#2E2E38"/>
+                            <circle cx="155" cy="45" r="26" fill="#2E2E38"/>
+                            <circle cx="45" cy="45" r="14" fill="#FFB7C5" opacity="0.6"/>
+                            <circle cx="155" cy="45" r="14" fill="#FFB7C5" opacity="0.6"/>
+                            <!-- Head -->
+                            <ellipse cx="100" cy="95" rx="72" ry="62" fill="#FFFFFF" stroke="#EAEAEA" stroke-width="2"/>
+                            <!-- Eye Patches -->
+                            <ellipse cx="70" cy="90" rx="19" ry="23" fill="#2E2E38" transform="rotate(-10 70 90)"/>
+                            <ellipse cx="130" cy="90" rx="19" ry="23" fill="#2E2E38" transform="rotate(10 130 90)"/>
+                            <!-- Eyes -->
+                            <circle cx="72" cy="88" r="6" fill="#FFFFFF"/>
+                            <circle cx="128" cy="88" r="6" fill="#FFFFFF"/>
+                            <circle cx="74" cy="86" r="3" fill="#2E2E38"/>
+                            <circle cx="126" cy="86" r="3" fill="#2E2E38"/>
+                            <!-- Blush -->
+                            <ellipse cx="52" cy="108" rx="12" ry="7" fill="#FF8CA3" opacity="0.8"/>
+                            <ellipse cx="148" cy="108" rx="12" ry="7" fill="#FF8CA3" opacity="0.8"/>
+                            <!-- Nose & Mouth -->
+                            <ellipse cx="100" cy="102" rx="7" ry="5" fill="#2E2E38"/>
+                            <path d="M93,110 Q100,116 107,110" fill="none" stroke="#2E2E38" stroke-width="3" stroke-linecap="round"/>
+                            
+                            <!-- Body & Paws -->
+                            <ellipse cx="100" cy="175" rx="60" ry="50" fill="#FFFFFF" stroke="#EAEAEA" stroke-width="2"/>
+                            <!-- Arms holding the sign -->
+                            <ellipse cx="48" cy="160" rx="18" ry="12" fill="#2E2E38" transform="rotate(-20 48 160)"/>
+                            <ellipse cx="152" cy="160" rx="18" ry="12" fill="#2E2E38" transform="rotate(20 152 160)"/>
+                        </svg>
+
+                        <!-- The "CLICK ME 💕" Board -->
+                        <div id="click-me-board" class="click-me-board">
+                            <span class="board-text">CLICK ME 💕</span>
+                        </div>
+                    </div>
+                </div>
+
+                <p class="tap-subtext">Tap my Bubu panda to reveal our memories ✨</p>
+            </div>
+        </section>
+
+        <!-- ========================================== -->
+        <!-- STEP 6 — MEMORY GALLERY                    -->
+        <!-- ========================================== -->
+        <section id="step-gallery" class="step-section hidden">
+            <div class="gallery-container">
+                
+                <header class="gallery-header">
+                    <h2 class="gallery-title">Our Precious Memories 🐼❤️</h2>
+                    <p class="gallery-subtitle">Every photo & video tells our cute little love story...</p>
+                </header>
+
+                <!-- Responsive Media Grid -->
+                <div id="memories-grid" class="memories-grid">
+                    <!-- Populated dynamically by script.js -->
+                </div>
+
+                <footer class="gallery-footer">
+                    <p class="footer-love">Made with all my love for Sadalika 💖</p>
+                </footer>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- ========================================== -->
+    <!-- STEP 7 & 8 — LIGHTBOX MEDIA VIEWER         -->
+    <!-- ========================================== -->
+    <div id="lightbox-modal" class="lightbox-modal hidden" aria-hidden="true" role="dialog">
+        <div class="lightbox-overlay" id="lightbox-overlay"></div>
+        
+        <div class="lightbox-content">
+            <button id="lightbox-close" class="lightbox-close" aria-label="Close viewer">
+                <span>← Back to Memories</span>
+            </button>
+            
+            <div class="lightbox-media-wrapper">
+                <img id="lightbox-img" class="lightbox-img hidden" src="" alt="Memory Photo">
+                <video id="lightbox-video" class="lightbox-video hidden" controls playsinline preload="metadata">
+                    <source id="lightbox-video-src" src="" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+            </div>
+            
+            <div id="lightbox-caption" class="lightbox-caption"></div>
+        </div>
+    </div>
+
+    <!-- Application Script -->
+    <script src="script.js"></script>
+</body>
+</html>
