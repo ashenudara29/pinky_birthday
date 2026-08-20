@@ -8,7 +8,7 @@ A complete, romantic, interactive, mobile-first birthday surprise web applicatio
 
 - **Mobile-First Design**: Tailored specifically for scanning via a QR code on smartphones (iPhone & Android).
 - **Interactive Unlock Flow**:
-  1. **Secret Welcome Screen** ("Hey Chuti Manikeee... 💕")
+  1. **Secret Welcome Screen** ("Hey Beautiful... 💕")
   2. **Multi-Step Question System** (Verifies answers case-insensitively with space trimming)
   3. **Birthday Unlock Celebration** (Confetti, floating balloons, glowing background, and custom popup card)
   4. **Romantic Love Letter** (Cream paper letter card with handwritten styling)
@@ -69,8 +69,7 @@ memories: [
 ```
 
 ### 5. Add / Replace Background Song
-1. Copy your favorite song (`.mp3` format) into: `assets/music/`
-2. Rename the file to: `our-song.mp3`
+Background music is loaded from `assets/musics/looplove.mp3`. You can replace this audio file anytime.
 
 ---
 

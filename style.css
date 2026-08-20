@@ -122,6 +122,35 @@ body {
     user-select: none;
 }
 
+/* Panda Voice Animation Effects */
+.panda-speaking {
+    animation: pandaTalkBounce 0.5s ease-in-out infinite alternate !important;
+}
+
+@keyframes pandaTalkBounce {
+    0% { transform: translateY(0) scale(1); }
+    100% { transform: translateY(-5px) scale(1.04); }
+}
+
+.panda-wrong {
+    animation: pandaHeadShake 0.6s ease-in-out !important;
+}
+
+@keyframes pandaHeadShake {
+    0%, 100% { transform: rotate(0deg); }
+    20%, 60% { transform: rotate(-12deg); }
+    40%, 80% { transform: rotate(12deg); }
+}
+
+.panda-correct {
+    animation: pandaHappyCelebrate 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275) !important;
+}
+
+@keyframes pandaHappyCelebrate {
+    0%, 100% { transform: translateY(0) scale(1); }
+    50% { transform: translateY(-24px) scale(1.15) rotate(6deg); }
+}
+
 .music-control:active {
     transform: scale(0.92);
 }
@@ -502,11 +531,24 @@ body {
 
 .celebration-title {
     font-family: var(--font-romantic);
-    font-size: clamp(2.2rem, 9vw, 3rem);
+    font-size: clamp(1.8rem, 6.5vw, 2.7rem);
     color: var(--deep-pink);
-    line-height: 1.25;
+    line-height: 1.3;
     margin-bottom: 12px;
     text-shadow: 0 3px 10px rgba(255, 79, 129, 0.2);
+}
+
+.celebration-title .title-main {
+    white-space: nowrap;
+    display: inline-block;
+    font-size: clamp(1.8rem, 6.5vw, 2.7rem);
+}
+
+.celebration-title .title-sub {
+    display: inline-block;
+    font-size: clamp(1.35rem, 5.2vw, 2rem);
+    margin-top: 6px;
+    font-weight: 600;
 }
 
 .celebration-subtitle {
@@ -919,6 +961,362 @@ body {
     text-shadow: 0 2px 6px rgba(0, 0, 0, 0.6);
 }
 
+/* ==========================================================================
+   STEP 0 — CINEMATIC PANDA INTRO
+   ========================================================================== */
+
+#step-intro {
+    min-height: 80vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    width: 100%;
+}
+
+.intro-container {
+    width: 100%;
+    max-width: 420px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    padding: 20px 16px;
+    gap: 20px;
+}
+
+/* Speech Bubble */
+.speech-bubble {
+    position: relative;
+    background: rgba(255, 255, 255, 0.94);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    border: 2px solid var(--card-border);
+    border-radius: 24px;
+    padding: 14px 24px;
+    box-shadow: var(--shadow-soft);
+    text-align: center;
+    max-width: 320px;
+    animation: bubblePop 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+    z-index: 15;
+}
+
+.speech-bubble::after {
+    content: '';
+    position: absolute;
+    bottom: -12px;
+    left: 50%;
+    transform: translateX(-50%);
+    border-width: 12px 12px 0 12px;
+    border-style: solid;
+    border-color: rgba(255, 255, 255, 0.94) transparent transparent transparent;
+}
+
+.speech-text {
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: var(--deep-pink);
+    margin: 0;
+    line-height: 1.4;
+}
+
+@keyframes bubblePop {
+    0% { transform: scale(0.6) translateY(10px); opacity: 0; }
+    100% { transform: scale(1) translateY(0); opacity: 1; }
+}
+
+/* Liquid Heart Widget */
+.intro-heart-widget {
+    position: relative;
+    width: 170px;
+    height: 170px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 10;
+    margin: 10px 0;
+}
+
+.liquid-heart-svg {
+    width: 100%;
+    height: 100%;
+    filter: drop-shadow(0 8px 20px rgba(255, 79, 129, 0.25));
+}
+
+#liquid-fill-rect {
+    transition: y 0.08s linear;
+}
+
+.liquid-wave {
+    animation: waveHorizontal 2s linear infinite;
+}
+
+@keyframes waveHorizontal {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50px); }
+}
+
+.unlocked-badge {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: linear-gradient(135deg, var(--primary-pink), var(--deep-pink));
+    color: #FFFFFF;
+    padding: 8px 18px;
+    border-radius: 20px;
+    font-size: 0.95rem;
+    font-weight: 700;
+    box-shadow: 0 4px 16px rgba(255, 79, 129, 0.4);
+    white-space: nowrap;
+    animation: badgePulse 0.4s cubic-bezier(0.34, 1.56, 0.64, 1) infinite alternate;
+}
+
+@keyframes badgePulse {
+    0% { transform: translate(-50%, -50%) scale(0.95); }
+    100% { transform: translate(-50%, -50%) scale(1.08); }
+}
+
+/* Intro Panda Character */
+.intro-panda-wrapper {
+    width: 120px;
+    height: 120px;
+    position: relative;
+    z-index: 12;
+    transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.intro-panda-svg {
+    width: 100%;
+    height: 100%;
+}
+
+/* Panda Walking Keyframes */
+.panda-walking-anim {
+    animation: pandaWalkBounce 0.4s ease-in-out infinite alternate;
+}
+
+@keyframes pandaWalkBounce {
+    0% { transform: translateY(0) rotate(-3deg); }
+    100% { transform: translateY(-8px) rotate(3deg); }
+}
+
+.panda-jumping-anim {
+    animation: pandaJumpArc 0.7s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+}
+
+@keyframes pandaJumpArc {
+    0% { transform: translateY(0) scale(0.8); }
+    50% { transform: translateY(-40px) scale(1.15) rotate(-6deg); }
+    100% { transform: translateY(0) scale(1) rotate(0deg); }
+}
+
+/* Press & Hold Container */
+.intro-hold-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    width: 100%;
+    max-width: 320px;
+    margin-top: 10px;
+    z-index: 15;
+}
+
+.btn-hold {
+    position: relative;
+    overflow: hidden;
+    touch-action: none;
+    user-select: none;
+    -webkit-user-select: none;
+    background: rgba(255, 255, 255, 0.9);
+    border: 2px solid var(--deep-pink);
+    color: var(--deep-pink);
+    font-weight: 700;
+    box-shadow: var(--shadow-soft);
+}
+
+.btn-hold:active {
+    transform: scale(0.97);
+}
+
+.btn-hold-fill {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 0%;
+    background: linear-gradient(135deg, var(--primary-pink), var(--deep-pink));
+    border-radius: 40px;
+    transition: width 0.05s linear;
+    z-index: 1;
+}
+
+.btn-hold-text {
+    position: relative;
+    z-index: 2;
+    transition: color 0.2s ease;
+}
+
+.btn-hold.holding .btn-hold-text {
+    color: #FFFFFF;
+}
+
+.hold-instruction {
+    font-size: 0.88rem;
+    color: var(--text-muted);
+    font-weight: 500;
+}
+
+/* ==========================================================================
+   STEP 0 — SECRET PASSCODE GATEWAY
+   ========================================================================== */
+
+#step-passcode {
+    min-height: 80vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+.passcode-card {
+    padding: 36px 20px 32px 20px;
+    max-width: 360px;
+    margin: 0 auto;
+}
+
+.passcode-header {
+    margin-bottom: 20px;
+}
+
+.passcode-icon {
+    font-size: 2.5rem;
+    display: block;
+    margin-bottom: 8px;
+    animation: iconBounce 2s ease-in-out infinite;
+}
+
+@keyframes iconBounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-6px); }
+}
+
+.passcode-title {
+    font-family: var(--font-romantic);
+    font-size: clamp(2rem, 7vw, 2.4rem);
+    color: var(--deep-pink);
+    margin-bottom: 4px;
+}
+
+.passcode-subtitle {
+    font-size: 0.92rem;
+    color: var(--text-muted);
+    font-weight: 500;
+}
+
+/* PIN Dots Display */
+.pin-dots-container {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    margin: 20px 0;
+}
+
+.pin-dot {
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.8);
+    border: 2px solid var(--soft-rose);
+    transition: var(--transition-smooth);
+    position: relative;
+}
+
+.pin-dot.filled {
+    background: var(--deep-pink);
+    border-color: var(--deep-pink);
+    transform: scale(1.18);
+    box-shadow: 0 0 10px rgba(255, 79, 129, 0.5);
+}
+
+.pin-dot.filled::after {
+    content: '💖';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 0.65rem;
+    color: white;
+}
+
+/* Cute Numpad Grid */
+.numpad-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+    max-width: 280px;
+    margin: 24px auto 0 auto;
+}
+
+.numpad-btn {
+    height: 56px;
+    min-height: 56px;
+    border-radius: 28px;
+    border: 1.5px solid var(--card-border);
+    background: rgba(255, 255, 255, 0.9);
+    font-family: var(--font-heading);
+    font-size: 1.35rem;
+    font-weight: 600;
+    color: var(--text-main);
+    cursor: pointer;
+    box-shadow: 0 4px 12px rgba(74, 39, 50, 0.05);
+    transition: var(--transition-fast);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    user-select: none;
+    touch-action: manipulation;
+}
+
+.numpad-btn:active {
+    transform: scale(0.92);
+    background: var(--accent-blush);
+    border-color: var(--deep-pink);
+    color: var(--deep-pink);
+}
+
+.numpad-action {
+    background: rgba(255, 232, 238, 0.6);
+    color: var(--text-muted);
+    font-size: 1.2rem;
+}
+
+.numpad-submit {
+    background: linear-gradient(135deg, var(--primary-pink), var(--deep-pink));
+    color: #FFFFFF;
+    box-shadow: 0 4px 14px rgba(255, 79, 129, 0.35);
+}
+
+.welcome-panda-gif {
+    max-width: 140px;
+    height: auto;
+    display: block;
+    margin: 0 auto 16px auto;
+    filter: drop-shadow(0 6px 12px rgba(255, 111, 145, 0.25));
+    border-radius: 16px;
+}
+
+.question-eating-gif {
+    max-width: 120px;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+    filter: drop-shadow(0 4px 10px rgba(255, 111, 145, 0.25));
+    border-radius: 12px;
+}
+
 /* Utility Class */
 .hidden {
     display: none !important;
@@ -933,3 +1331,5 @@ body {
         scroll-behavior: auto !important;
     }
 }
+
+

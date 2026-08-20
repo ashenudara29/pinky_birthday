@@ -9,6 +9,9 @@
  * ==========================================================================
  */
 const CONFIG = {
+    // Secret Access Passcode
+    passcode: "723254",
+
     // Girlfriend's name (case-insensitive)
     girlfriendName: "Sadalika",
 
@@ -19,22 +22,24 @@ const CONFIG = {
     hisNameLetter: "A",
 
     // Main birthday celebration header message
-    birthdayMessage: "Happy Birthday Chuti Manikeeeee💕😘😘🫶",
+    birthdayMessage: "<span class=\"title-main\">Happy Birthday My Love...</span><br><span class=\"title-sub\">i love you more than my world 🌍💕😘🫶</span>",
 
     // Path to background music file
-    music: "assets/music/our-song.mp3",
+    music: "assets/musics/looplove.mp3",
 
     // Love Letter text content
     // Replace "MY_LOVE_LETTER_HERE" or edit the string below to insert your own letter
-    loveLetter: `My dearest Chuti Manikeee 💕,
+    loveLetter: `Love Youu Pinkyyy 💕
 
 Happy Birthday to the most wonderful, adorable, and special person in my whole world! 🐼💗
 
-From the very first moment you walked into my life, every day has become sweeter, happier, and filled with so much magic. Your beautiful smile, your warm loving heart, and your cute panda energy bring so much light into my life.
+From the very first moment you walked into my life, every day has become sweeter, happier, and filled with so much magic. Your beautiful smile, your warm loving heart, and your cute panda energy bring so much light into my life. ✨💕
 
-This secret little surprise is just a tiny token of how deeply I treasure you. I built this special place so you will always have a reminder of how much you are loved and cherished today, tomorrow, and forever.
+This secret little surprise is just a tiny token of how deeply I treasure you. I built this special place so you will always have a reminder of how much you are loved and cherished — today, tomorrow, and forever. ❤️
 
-Thank you for being my dream come true, my best friend, and my panda forever. I wish you a birthday filled with endless laughter, gentle hugs, delicious treats, and all the love in the universe!
+Thank you for being my dream come true, my best friend, and my panda forever. 🐼💗
+
+I wish you a birthday filled with endless laughter, gentle hugs, delicious treats, beautiful memories, and all the love in the universe! 🎂✨💕
 
 Forever & Always Yours,
 Your Bubu ❤️`,
@@ -44,20 +49,20 @@ Your Bubu ❤️`,
         {
             id: 1,
             question: "What is your name? 💕",
-            answer: "Sadalika",
-            errorMsg: "Hmmmm... try again Chuti Manikeee 🥺💕",
+            answer: ["sadalika", "tharushi", "jayasinghe"],
+            errorMsg: "Hmmmm... try again pandoo 🥺💕",
             pandaEmoji: "🐼"
         },
         {
             id: 2,
             question: "What is your panda's name? 🐼💗",
             answer: "Bubu",
-            errorMsg: "Are you sure you're my Chuti Manikeee? 🥺🐼",
+            errorMsg: "Are you sure you're my panda? 🥺🐼",
             pandaEmoji: "🐼💖"
         },
         {
             id: 3,
-            question: "What is the first letter of his name? ❤️",
+            question: "What is the first letter of the name of the person you love most in the world? 💕",
             answer: "A",
             errorMsg: "One last little thought... try again 🥺💕",
             pandaEmoji: "🐼🥰"
@@ -68,27 +73,22 @@ Your Bubu ❤️`,
     memories: [
         {
             type: "image",
-            src: "assets/photos/photo1.jpg",
+            src: "assets/photos/photo1.png",
             caption: "Our happy moments together ❤️"
         },
         {
             type: "image",
-            src: "assets/photos/photo2.jpg",
+            src: "assets/photos/photo2.jpeg",
             caption: "That sweet, beautiful smile 💕"
         },
         {
-            type: "video",
-            src: "assets/videos/video1.mp4",
-            caption: "A precious video memory 🐼✨"
+            type: "image",
+            src: "assets/photos/photo3.jpeg",
+            caption: "Making memories together 💖"
         },
         {
             type: "image",
-            src: "assets/photos/photo3.jpg",
-            caption: "Making memories with my Chuti Manikeee 💖"
-        },
-        {
-            type: "image",
-            src: "assets/photos/photo4.jpg",
+            src: "assets/photos/photo4.jpeg",
             caption: "Forever & Always 💕"
         }
     ]
@@ -112,7 +112,34 @@ const elements = {
     confettiCanvas: document.getElementById('confetti-canvas'),
     musicControl: document.getElementById('music-control'),
     musicIcon: document.getElementById('music-icon'),
-    
+
+    // Passcode Gate Elements
+    stepPasscode: document.getElementById('step-passcode'),
+    passcodeCard: document.getElementById('passcode-card'),
+    passcodeError: document.getElementById('passcode-error'),
+    passcodeErrorText: document.getElementById('passcode-error-text'),
+    pinDots: [
+        document.getElementById('pin-dot-0'),
+        document.getElementById('pin-dot-1'),
+        document.getElementById('pin-dot-2'),
+        document.getElementById('pin-dot-3'),
+        document.getElementById('pin-dot-4'),
+        document.getElementById('pin-dot-5')
+    ],
+
+    // Intro Elements
+    stepIntro: document.getElementById('step-intro'),
+    introSpeechBubble: document.getElementById('intro-speech-bubble'),
+    speechText: document.getElementById('speech-text'),
+    introHeartWidget: document.getElementById('intro-heart-widget'),
+    liquidFillRect: document.getElementById('liquid-fill-rect'),
+    liquidWave: document.getElementById('liquid-wave'),
+    unlockedBadge: document.getElementById('unlocked-badge'),
+    introPandaWrapper: document.getElementById('intro-panda-wrapper'),
+    introHoldContainer: document.getElementById('intro-hold-container'),
+    btnHoldEnter: document.getElementById('btn-hold-enter'),
+    btnHoldFill: document.getElementById('btn-hold-fill'),
+
     // Steps
     stepWelcome: document.getElementById('step-welcome'),
     stepQuestions: document.getElementById('step-questions'),
@@ -120,10 +147,10 @@ const elements = {
     stepLetter: document.getElementById('step-letter'),
     stepPandaGateway: document.getElementById('step-panda-gateway'),
     stepGallery: document.getElementById('step-gallery'),
-    
+
     // Welcome
     btnStart: document.getElementById('btn-start'),
-    
+
     // Questions
     questionCard: document.getElementById('question-card'),
     questionProgressText: document.getElementById('question-progress-text'),
@@ -135,20 +162,20 @@ const elements = {
     errorText: document.getElementById('error-text'),
     pandaEmoji: document.getElementById('panda-emoji'),
     dots: [document.getElementById('dot-1'), document.getElementById('dot-2'), document.getElementById('dot-3')],
-    
+
     // Celebration
     celebrationTitle: document.getElementById('celebration-title'),
     btnOpenHeart: document.getElementById('btn-open-heart'),
-    
+
     // Letter
     letterHeading: document.getElementById('letter-heading'),
     letterContent: document.getElementById('letter-content'),
     btnContinueMemories: document.getElementById('btn-continue-memories'),
-    
+
     // Panda Gateway
     interactivePanda: document.getElementById('interactive-panda'),
     clickMeBoard: document.getElementById('click-me-board'),
-    
+
     // Gallery & Lightbox
     memoriesGrid: document.getElementById('memories-grid'),
     lightboxModal: document.getElementById('lightbox-modal'),
@@ -170,6 +197,7 @@ document.addEventListener('DOMContentLoaded', () => {
     initParticleCanvas();
     setupEventListeners();
     populateLetterContent();
+    initPasscodeGate();
 });
 
 
@@ -192,11 +220,31 @@ function initAudioEngine() {
     });
 }
 
+function triggerPandaWrongAnimation() {
+    const panda = elements.introPandaWrapper || document.querySelector('.question-panda-box');
+    if (panda) {
+        panda.classList.remove('panda-correct');
+        void panda.offsetWidth;
+        panda.classList.add('panda-wrong');
+        setTimeout(() => panda.classList.remove('panda-wrong'), 800);
+    }
+}
+
+function triggerPandaCorrectAnimation() {
+    const panda = elements.introPandaWrapper || document.querySelector('.question-panda-box');
+    if (panda) {
+        panda.classList.remove('panda-wrong');
+        void panda.offsetWidth;
+        panda.classList.add('panda-correct');
+        setTimeout(() => panda.classList.remove('panda-correct'), 1000);
+    }
+}
+
 function startAudio() {
     if (isAudioPlaying) return;
-    
+
     elements.musicControl.classList.remove('hidden');
-    
+
     bgAudio.play().then(() => {
         isAudioPlaying = true;
         elements.musicControl.classList.remove('paused');
@@ -239,16 +287,16 @@ function startFallbackAudioSynthesizer() {
             if (!isAudioPlaying) return;
             const osc = audioContext.createOscillator();
             const gain = audioContext.createGain();
-            
+
             osc.type = 'sine';
             osc.frequency.setValueAtTime(notes[noteIdx % notes.length], audioContext.currentTime);
-            
+
             gain.gain.setValueAtTime(0.08, audioContext.currentTime);
             gain.gain.exponentialRampToValueAtTime(0.001, audioContext.currentTime + 1.8);
-            
+
             osc.connect(gain);
             gain.connect(audioContext.destination);
-            
+
             osc.start();
             osc.stop(audioContext.currentTime + 2);
             noteIdx++;
@@ -304,7 +352,7 @@ function initParticleCanvas() {
             ctx.translate(this.x, this.y);
             ctx.globalAlpha = this.opacity;
             ctx.fillStyle = this.color;
-            
+
             // Draw Heart Shape
             ctx.beginPath();
             const topCurveHeight = this.size * 0.3;
@@ -315,7 +363,7 @@ function initParticleCanvas() {
             ctx.bezierCurveTo(this.size / 2, 0, 0, 0, 0, topCurveHeight);
             ctx.closePath();
             ctx.fill();
-            
+
             ctx.restore();
         }
     }
@@ -436,7 +484,7 @@ function showStep(fromSection, toSection) {
     // Trigger browser layout before adding active class for CSS transition
     void toSection.offsetWidth;
     toSection.classList.add('active');
-    
+
     window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 
@@ -463,8 +511,14 @@ function loadQuestion(index) {
 
     // Update Title & Emoji
     elements.questionTitle.textContent = qData.question;
-    elements.pandaEmoji.textContent = qData.pandaEmoji;
-    
+    if (elements.pandaEmoji) elements.pandaEmoji.textContent = qData.pandaEmoji;
+
+    // Ensure eating panda GIF loops continuously on step load
+    const eatingPandaImg = document.getElementById('eating-panda-img');
+    if (eatingPandaImg) {
+        eatingPandaImg.src = 'assets/panda/eating_panda.gif?' + new Date().getTime();
+    }
+
     setTimeout(() => {
         elements.answerInput.focus();
     }, 300);
@@ -475,15 +529,23 @@ function handleAnswerSubmit(e) {
 
     const userInput = elements.answerInput.value.trim().toLowerCase();
     const currentQData = CONFIG.questions[currentQuestionIndex];
-    const expectedAnswer = currentQData.answer.trim().toLowerCase();
 
-    if (userInput === expectedAnswer) {
+    let isCorrect = false;
+    if (Array.isArray(currentQData.answer)) {
+        isCorrect = currentQData.answer.some(ans => userInput.includes(ans.toLowerCase().trim()));
+    } else {
+        isCorrect = userInput === currentQData.answer.trim().toLowerCase();
+    }
+
+    if (isCorrect) {
         // Correct Answer
         elements.errorMessage.classList.add('hidden');
         elements.answerInput.blur();
 
         if (currentQuestionIndex < CONFIG.questions.length - 1) {
-            // Success micro-feedback and slide to next question
+            // Success micro-feedback
+            triggerPandaCorrectAnimation();
+
             elements.questionCard.style.transform = "scale(1.03)";
             setTimeout(() => {
                 elements.questionCard.style.transform = "scale(1)";
@@ -491,12 +553,15 @@ function handleAnswerSubmit(e) {
             }, 300);
         } else {
             // Final Answer Correct -> Unlock Birthday Celebration
+            triggerPandaCorrectAnimation();
             triggerConfetti();
-            elements.celebrationTitle.textContent = CONFIG.birthdayMessage;
+            elements.celebrationTitle.innerHTML = CONFIG.birthdayMessage;
             showStep(elements.stepQuestions, elements.stepCelebration);
         }
     } else {
-        // Incorrect Answer -> Shake animation & show cute error toast
+        // Incorrect Answer -> Shake animation & show error toast
+        triggerPandaWrongAnimation();
+
         elements.errorText.textContent = currentQData.errorMsg;
         elements.errorMessage.classList.remove('hidden');
 
@@ -527,7 +592,7 @@ function populateLetterContent() {
 function handlePandaTap() {
     // Panda tap animation
     elements.interactivePanda.style.transform = "scale(1.2) rotate(5deg)";
-    
+
     // Heart burst effect
     triggerConfetti();
 
@@ -575,7 +640,7 @@ function renderGallery() {
             imgElement.alt = item.caption || 'Memory photo';
             imgElement.className = 'memory-thumb';
             imgElement.loading = 'lazy';
-            
+
             // Fallback sample visual if photo file is not found
             imgElement.onerror = () => {
                 imgElement.src = `data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="300" height="375" viewBox="0 0 300 375"><rect width="300" height="375" fill="%23FFE3E8"/><text x="50%" y="45%" dominant-baseline="middle" text-anchor="middle" font-family="sans-serif" font-size="42" fill="%23FF4F81">🐼💖</text><text x="50%" y="60%" dominant-baseline="middle" text-anchor="middle" font-family="sans-serif" font-size="16" font-weight="bold" fill="%234A2732">Our Memory ${index + 1}</text></svg>`;
@@ -628,3 +693,288 @@ function closeLightbox() {
     elements.lightboxModal.setAttribute('aria-hidden', 'true');
     window.scrollTo(0, savedScrollPosition);
 }
+
+
+/* ==========================================================================
+   CINEMATIC INTRO SEQUENCE (WALK -> JUMP -> GREETING -> HOLD TO ENTER)
+   ========================================================================== */
+
+let isHolding = false;
+let holdStartTime = 0;
+let holdAnimationFrame = null;
+let isIntroCompleted = false;
+
+function startIntro() {
+    isIntroCompleted = false;
+    if (elements.introSpeechBubble) elements.introSpeechBubble.classList.add('hidden');
+    if (elements.introHeartWidget) elements.introHeartWidget.classList.add('hidden');
+    if (elements.introHoldContainer) elements.introHoldContainer.classList.add('hidden');
+    if (elements.unlockedBadge) elements.unlockedBadge.classList.add('hidden');
+
+    updateHeartProgress(0);
+    startPandaWalk();
+}
+
+// Scene 1: Panda Walking Across Screen
+function startPandaWalk() {
+    const panda = elements.introPandaWrapper;
+    if (!panda) return;
+
+    panda.className = 'intro-panda-wrapper panda-walking-anim';
+
+    let startTime = null;
+    const walkDuration = 2200;
+
+    function animateWalk(timestamp) {
+        if (!startTime) startTime = timestamp;
+        const progress = Math.min(1, (timestamp - startTime) / walkDuration);
+
+        const startX = -120;
+        const endX = window.innerWidth > 500 ? 100 : (window.innerWidth / 2 - 60);
+        const currentX = startX + (endX - startX) * progress;
+
+        panda.style.transform = `translateX(${currentX}px)`;
+
+        if (progress < 1) {
+            requestAnimationFrame(animateWalk);
+        } else {
+            setTimeout(() => {
+                startPandaJump();
+            }, 300);
+        }
+    }
+
+    requestAnimationFrame(animateWalk);
+}
+
+// Scene 2: Panda Jump to Center
+function startPandaJump() {
+    const panda = elements.introPandaWrapper;
+    if (!panda) return;
+
+    panda.className = 'intro-panda-wrapper panda-jumping-anim';
+    panda.style.transform = `translateX(0px)`;
+
+    setTimeout(() => {
+        triggerConfetti();
+        showPandaGreeting();
+    }, 700);
+}
+
+// Scene 3: Panda Speech Bubble Greetings
+function showPandaGreeting() {
+    const bubble = elements.introSpeechBubble;
+    const textEl = elements.speechText;
+    if (!bubble || !textEl) return;
+
+    bubble.classList.remove('hidden');
+    textEl.textContent = "Hi i am bubu! 🐼💕";
+
+    setTimeout(() => {
+        textEl.textContent = "I have a little surprise for you... 💗";
+
+        setTimeout(() => {
+            textEl.textContent = "But first, you have to do something for me 👀";
+
+            setTimeout(() => {
+                if (elements.introHeartWidget) elements.introHeartWidget.classList.remove('hidden');
+                if (elements.introHoldContainer) elements.introHoldContainer.classList.remove('hidden');
+                initHoldInteraction();
+            }, 1200);
+
+        }, 1400);
+
+    }, 1200);
+}
+
+// Scene 4 & 5: Press & Hold Interaction with Liquid Heart Fill
+function initHoldInteraction() {
+    const btn = elements.btnHoldEnter;
+    if (!btn) return;
+
+    btn.addEventListener('pointerdown', handleHoldStart);
+    btn.addEventListener('pointerup', handleHoldEnd);
+    btn.addEventListener('pointercancel', handleHoldEnd);
+    btn.addEventListener('pointerleave', handleHoldEnd);
+
+    btn.addEventListener('touchstart', (e) => e.preventDefault(), { passive: false });
+}
+
+function handleHoldStart(e) {
+    if (isIntroCompleted) return;
+    if (e) e.preventDefault();
+
+    isHolding = true;
+    if (elements.btnHoldEnter) elements.btnHoldEnter.classList.add('holding');
+    holdStartTime = performance.now();
+
+    startAudio();
+    holdLoop();
+}
+
+function handleHoldEnd(e) {
+    if (isIntroCompleted) return;
+    if (isHolding) {
+        isHolding = false;
+        if (elements.btnHoldEnter) elements.btnHoldEnter.classList.remove('holding');
+        if (holdAnimationFrame) cancelAnimationFrame(holdAnimationFrame);
+
+        updateHeartProgress(0);
+    }
+}
+
+function holdLoop() {
+    if (!isHolding || isIntroCompleted) return;
+
+    const elapsed = performance.now() - holdStartTime;
+    const progress = Math.min(100, (elapsed / 3000) * 100);
+
+    updateHeartProgress(progress);
+
+    if (progress < 100) {
+        holdAnimationFrame = requestAnimationFrame(holdLoop);
+    } else {
+        isHolding = false;
+        isIntroCompleted = true;
+
+        if (elements.btnHoldEnter) elements.btnHoldEnter.classList.remove('holding');
+        if (elements.unlockedBadge) elements.unlockedBadge.classList.remove('hidden');
+
+        triggerConfetti();
+
+        setTimeout(() => {
+            completeIntro();
+        }, 900);
+    }
+}
+
+function updateHeartProgress(percent) {
+    if (elements.btnHoldFill) {
+        elements.btnHoldFill.style.width = `${percent}%`;
+    }
+
+    if (elements.liquidFillRect && elements.liquidWave) {
+        const fillY = 180 - (percent / 100) * 180;
+        elements.liquidFillRect.setAttribute('y', fillY);
+        elements.liquidWave.setAttribute('d', `M0,${fillY} Q50,${fillY - 6} 100,${fillY} T200,${fillY} L200,200 L0,200 Z`);
+    }
+}
+
+function completeIntro() {
+    showStep(elements.stepIntro, elements.stepWelcome);
+}
+
+
+/* ==========================================================================
+   SECRET PASSCODE GATEWAY (CODE: 723254)
+   ========================================================================== */
+
+let enteredPasscode = "";
+
+function initPasscodeGate() {
+    enteredPasscode = "";
+    updatePasscodeDots();
+
+    // Attach click events to numpad buttons
+    const numpadButtons = document.querySelectorAll('.numpad-btn');
+    numpadButtons.forEach(btn => {
+        btn.addEventListener('click', (e) => {
+            e.preventDefault();
+            const val = btn.getAttribute('data-val');
+            const action = btn.getAttribute('data-action');
+
+            if (val !== null) {
+                appendPasscodeDigit(val);
+            } else if (action === 'delete') {
+                deletePasscodeDigit();
+            } else if (action === 'submit') {
+                verifyPasscode();
+            }
+        });
+    });
+
+    // Support physical keyboard typing
+    document.addEventListener('keydown', (e) => {
+        if (!elements.stepPasscode || elements.stepPasscode.classList.contains('hidden')) return;
+
+        if (e.key >= '0' && e.key <= '9') {
+            appendPasscodeDigit(e.key);
+        } else if (e.key === 'Backspace') {
+            deletePasscodeDigit();
+        } else if (e.key === 'Enter') {
+            verifyPasscode();
+        }
+    });
+}
+
+function appendPasscodeDigit(digit) {
+    if (enteredPasscode.length < 6) {
+        enteredPasscode += digit;
+        updatePasscodeDots();
+        if (elements.passcodeError) elements.passcodeError.classList.add('hidden');
+
+        // Auto verify when 6 digits entered
+        if (enteredPasscode.length === 6) {
+            setTimeout(() => {
+                verifyPasscode();
+            }, 150);
+        }
+    }
+}
+
+function deletePasscodeDigit() {
+    if (enteredPasscode.length > 0) {
+        enteredPasscode = enteredPasscode.slice(0, -1);
+        updatePasscodeDots();
+        if (elements.passcodeError) elements.passcodeError.classList.add('hidden');
+    }
+}
+
+function updatePasscodeDots() {
+    if (!elements.pinDots) return;
+    elements.pinDots.forEach((dot, index) => {
+        if (dot) {
+            if (index < enteredPasscode.length) {
+                dot.classList.add('filled');
+            } else {
+                dot.classList.remove('filled');
+            }
+        }
+    });
+}
+
+function verifyPasscode() {
+    const expectedPasscode = CONFIG.passcode || "723254";
+
+    if (enteredPasscode === expectedPasscode) {
+        // Correct Passcode!
+        if (elements.passcodeError) elements.passcodeError.classList.add('hidden');
+        triggerConfetti();
+
+        // Start audio context on passcode entry
+        startAudio();
+
+        // Transition to Cinematic Panda Intro
+        setTimeout(() => {
+            showStep(elements.stepPasscode, elements.stepIntro);
+            startIntro();
+        }, 300);
+    } else {
+        // Incorrect Passcode -> Shake card & show error
+        if (elements.passcodeError) elements.passcodeError.classList.remove('hidden');
+
+        if (elements.passcodeCard) {
+            elements.passcodeCard.classList.remove('shake-card');
+            void elements.passcodeCard.offsetWidth; // Reflow
+            elements.passcodeCard.classList.add('shake-card');
+        }
+
+        // Reset entered passcode digits
+        enteredPasscode = "";
+        setTimeout(() => {
+            updatePasscodeDots();
+        }, 400);
+    }
+}
+
+

@@ -6,7 +6,7 @@
     <title>A Secret Birthday Surprise 💕</title>
     
     <!-- SEO & Social Meta -->
-    <meta name="description" content="A secret romantic birthday surprise created especially for my Chuti Manikeee 💕">
+    <meta name="description" content="A secret romantic birthday surprise created especially for you 💕">
     <meta name="theme-color" content="#FFE8EE">
     
     <!-- Google Fonts: Handwritten & Modern Mobile UI Fonts -->
@@ -38,43 +38,129 @@
     <main class="app-container">
 
         <!-- ========================================== -->
-        <!-- STEP 1 — SECRET WELCOME SCREEN             -->
+        <!-- STEP 0 — SECRET PASSCODE GATEWAY          -->
         <!-- ========================================== -->
-        <section id="step-welcome" class="step-section active">
-            <div class="card glass-card welcome-card">
+        <section id="step-passcode" class="step-section active">
+            <div id="passcode-card" class="card glass-card passcode-card">
                 
-                <!-- Cute SVG Panda Illustration -->
-                <div class="panda-wrapper welcome-panda">
-                    <svg class="panda-svg" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
-                        <!-- Ears -->
-                        <circle cx="50" cy="50" r="28" fill="#2E2E38"/>
-                        <circle cx="150" cy="50" r="28" fill="#2E2E38"/>
-                        <circle cx="50" cy="50" r="16" fill="#FFB7C5" opacity="0.6"/>
-                        <circle cx="150" cy="50" r="16" fill="#FFB7C5" opacity="0.6"/>
-                        <!-- Head -->
-                        <ellipse cx="100" cy="105" rx="75" ry="65" fill="#FFFFFF" stroke="#EAEAEA" stroke-width="2"/>
-                        <!-- Eye Patches -->
-                        <ellipse cx="70" cy="100" rx="20" ry="24" fill="#2E2E38" transform="rotate(-10 70 100)"/>
-                        <ellipse cx="130" cy="100" rx="20" ry="24" fill="#2E2E38" transform="rotate(10 130 100)"/>
-                        <!-- Eyes -->
-                        <circle cx="72" cy="98" r="7" fill="#FFFFFF"/>
-                        <circle cx="128" cy="98" r="7" fill="#FFFFFF"/>
-                        <circle cx="74" cy="96" r="3" fill="#2E2E38"/>
-                        <circle cx="126" cy="96" r="3" fill="#2E2E38"/>
-                        <circle cx="71" cy="95" r="1.5" fill="#FFFFFF"/>
-                        <circle cx="129" cy="95" r="1.5" fill="#FFFFFF"/>
-                        <!-- Blush Cheeks -->
-                        <ellipse cx="52" cy="118" rx="12" ry="7" fill="#FF8CA3" opacity="0.75"/>
-                        <ellipse cx="148" cy="118" rx="12" ry="7" fill="#FF8CA3" opacity="0.75"/>
-                        <!-- Nose & Mouth -->
-                        <ellipse cx="100" cy="112" rx="8" ry="6" fill="#2E2E38"/>
-                        <path d="M93,120 Q100,127 107,120" fill="none" stroke="#2E2E38" stroke-width="3" stroke-linecap="round"/>
-                        <!-- Floating Heart in Paw -->
-                        <path class="heart-pulse" d="M100,145 C100,145 88,135 88,127 C88,122 92,118 97,118 C100,118 100,121 100,121 C100,121 100,118 103,118 C108,118 112,122 112,127 C112,135 100,145 100,145 Z" fill="#FF4F81"/>
-                    </svg>
+                <div class="passcode-header">
+                    <span class="passcode-icon">🔐🐼</span>
+                    <h1 class="passcode-title">Enter Secret Passcode 💕</h1>
+                    <p class="passcode-subtitle">Enter the secret 6-digit code to enter...</p>
                 </div>
 
-                <h1 class="romantic-title">Hey Chuti Manikeee... 💕</h1>
+                <!-- 6 PIN Dots Feedback -->
+                <div class="pin-dots-container">
+                    <span id="pin-dot-0" class="pin-dot"></span>
+                    <span id="pin-dot-1" class="pin-dot"></span>
+                    <span id="pin-dot-2" class="pin-dot"></span>
+                    <span id="pin-dot-3" class="pin-dot"></span>
+                    <span id="pin-dot-4" class="pin-dot"></span>
+                    <span id="pin-dot-5" class="pin-dot"></span>
+                </div>
+
+                <!-- Error Toast -->
+                <div id="passcode-error" class="error-toast hidden" role="alert">
+                    <span id="passcode-error-text">Incorrect secret code... try again 🥺💕</span>
+                </div>
+
+                <!-- Cute Mobile Numpad Grid -->
+                <div class="numpad-grid">
+                    <button class="numpad-btn" data-val="1" type="button">1</button>
+                    <button class="numpad-btn" data-val="2" type="button">2</button>
+                    <button class="numpad-btn" data-val="3" type="button">3</button>
+
+                    <button class="numpad-btn" data-val="4" type="button">4</button>
+                    <button class="numpad-btn" data-val="5" type="button">5</button>
+                    <button class="numpad-btn" data-val="6" type="button">6</button>
+
+                    <button class="numpad-btn" data-val="7" type="button">7</button>
+                    <button class="numpad-btn" data-val="8" type="button">8</button>
+                    <button class="numpad-btn" data-val="9" type="button">9</button>
+
+                    <button class="numpad-btn numpad-action" id="btn-numpad-del" data-action="delete" type="button" aria-label="Delete">⌫</button>
+                    <button class="numpad-btn" data-val="0" type="button">0</button>
+                    <button class="numpad-btn numpad-action numpad-submit" id="btn-numpad-enter" data-action="submit" type="button" aria-label="Submit">💖</button>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- ========================================== -->
+        <!-- STEP 0.5 — CINEMATIC PANDA INTRO           -->
+        <!-- ========================================== -->
+        <section id="step-intro" class="step-section hidden">
+            <div class="intro-container">
+                
+                <!-- Speech Bubble Above Panda -->
+                <div id="intro-speech-bubble" class="speech-bubble hidden">
+                    <p id="speech-text" class="speech-text">Hi My Love! 🐼💕</p>
+                </div>
+
+                <!-- Liquid Fill SVG Heart Widget -->
+                <div id="intro-heart-widget" class="intro-heart-widget hidden">
+                    <svg class="liquid-heart-svg" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+                        <defs>
+                            <!-- Liquid Gradient -->
+                            <linearGradient id="liquidGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+                                <stop offset="0%" stop-color="#FF4F81"/>
+                                <stop offset="100%" stop-color="#FF6F91"/>
+                            </linearGradient>
+
+                            <!-- Clip path defined by heart outline -->
+                            <clipPath id="heartShapeClip">
+                                <path d="M100,165 C100,165 25,115 25,65 C25,35 48,15 75,15 C90,15 100,26 100,26 C100,26 110,15 125,15 C152,15 175,35 175,65 C175,115 100,165 100,165 Z"/>
+                            </clipPath>
+                        </defs>
+
+                        <!-- Heart Background Area -->
+                        <path d="M100,165 C100,165 25,115 25,65 C25,35 48,15 75,15 C90,15 100,26 100,26 C100,26 110,15 125,15 C152,15 175,35 175,65 C175,115 100,165 100,165 Z" fill="rgba(255, 232, 238, 0.7)" stroke="#FF4F81" stroke-width="5" stroke-linejoin="round"/>
+
+                        <!-- Filling Liquid clipped inside Heart -->
+                        <g clip-path="url(#heartShapeClip)">
+                            <rect id="liquid-fill-rect" x="0" y="180" width="200" height="200" fill="url(#liquidGrad)"/>
+                            <path id="liquid-wave" class="liquid-wave" d="M0,180 Q50,173 100,180 T200,180 L200,200 L0,200 Z" fill="#FF4F81" opacity="0.7"/>
+                        </g>
+                        
+                        <!-- Heart Border Highlight -->
+                        <path d="M100,165 C100,165 25,115 25,65 C25,35 48,15 75,15 C90,15 100,26 100,26 C100,26 110,15 125,15 C152,15 175,35 175,65 C175,115 100,165 100,165 Z" fill="none" stroke="#FF4F81" stroke-width="6" stroke-linejoin="round"/>
+                    </svg>
+
+                    <!-- Unlocked Badge Text -->
+                    <div id="unlocked-badge" class="unlocked-badge hidden">
+                        <span>Love unlocked! 💕</span>
+                    </div>
+                </div>
+
+                <!-- Walking & Jumping Panda Character -->
+                <div id="intro-panda-wrapper" class="intro-panda-wrapper">
+                    <img src="assets/panda/panda1.svg" class="panda-svg intro-panda-svg" alt="Panda">
+                </div>
+
+                <!-- Press & Hold Button Controls -->
+                <div id="intro-hold-container" class="intro-hold-container hidden">
+                    <button id="btn-hold-enter" class="btn btn-hold" type="button">
+                        <span class="btn-hold-fill" id="btn-hold-fill"></span>
+                        <span class="btn-hold-text">Press &amp; Hold to Enter 💕</span>
+                    </button>
+                    <p class="hold-instruction">Hold for 3 seconds...</p>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- ========================================== -->
+        <!-- STEP 1 — SECRET WELCOME SCREEN             -->
+        <!-- ========================================== -->
+        <section id="step-welcome" class="step-section hidden">
+            <div class="card glass-card welcome-card">
+                
+                <!-- Cute Animated Panda GIF -->
+                <div class="panda-wrapper welcome-panda">
+                    <img src="assets/panda/sayhi.gif" alt="Say Hi Panda" class="panda-gif welcome-panda-gif">
+                </div>
+
+                <h1 class="romantic-title">Hey Beautiful... 💕</h1>
                 <p class="subtitle">I have a little surprise for you... 🐼💗</p>
                 <p class="subtext-notice">But first... I need to make sure it's really you 👀</p>
 
@@ -102,7 +188,7 @@
 
                 <!-- Panda Reaction Element -->
                 <div class="question-panda-box">
-                    <span id="panda-emoji" class="panda-emoji">🐼</span>
+                    <img id="eating-panda-img" src="assets/panda/eating_panda.gif" alt="Eating Panda" class="panda-gif question-eating-gif">
                 </div>
 
                 <!-- Dynamic Question Container -->
@@ -120,7 +206,7 @@
 
                     <!-- Error Toast / Feedback Message -->
                     <div id="error-message" class="error-toast hidden" role="alert">
-                        <span id="error-text">Hmmmm... try again Chuti Manikeee 🥺💕</span>
+                        <span id="error-text">Hmmmm... try again pandoo 🥺💕</span>
                     </div>
                 </div>
 
@@ -165,7 +251,7 @@
                     <div class="balloon balloon-right">🎈</div>
                 </div>
 
-                <h1 id="celebration-title" class="celebration-title">Happy Birthday Chuti Manikeeeee💕😘😘🫶</h1>
+                <h1 id="celebration-title" class="celebration-title"><span class="title-main">Happy Birthday My Love...</span><br><span class="title-sub">i love you more than my world 🌍💕😘🫶</span></h1>
                 <p class="celebration-subtitle">Your little surprise is finally unlocked... 🐼💗</p>
 
                 <button id="btn-open-heart" class="btn btn-primary pulse-btn btn-lg" type="button">
@@ -217,35 +303,7 @@
 
                     <!-- Interactive Animated Panda -->
                     <div class="panda-character">
-                        <svg class="panda-svg gateway-panda-svg" viewBox="0 0 200 240" xmlns="http://www.w3.org/2000/svg">
-                            <!-- Ears -->
-                            <circle cx="45" cy="45" r="26" fill="#2E2E38"/>
-                            <circle cx="155" cy="45" r="26" fill="#2E2E38"/>
-                            <circle cx="45" cy="45" r="14" fill="#FFB7C5" opacity="0.6"/>
-                            <circle cx="155" cy="45" r="14" fill="#FFB7C5" opacity="0.6"/>
-                            <!-- Head -->
-                            <ellipse cx="100" cy="95" rx="72" ry="62" fill="#FFFFFF" stroke="#EAEAEA" stroke-width="2"/>
-                            <!-- Eye Patches -->
-                            <ellipse cx="70" cy="90" rx="19" ry="23" fill="#2E2E38" transform="rotate(-10 70 90)"/>
-                            <ellipse cx="130" cy="90" rx="19" ry="23" fill="#2E2E38" transform="rotate(10 130 90)"/>
-                            <!-- Eyes -->
-                            <circle cx="72" cy="88" r="6" fill="#FFFFFF"/>
-                            <circle cx="128" cy="88" r="6" fill="#FFFFFF"/>
-                            <circle cx="74" cy="86" r="3" fill="#2E2E38"/>
-                            <circle cx="126" cy="86" r="3" fill="#2E2E38"/>
-                            <!-- Blush -->
-                            <ellipse cx="52" cy="108" rx="12" ry="7" fill="#FF8CA3" opacity="0.8"/>
-                            <ellipse cx="148" cy="108" rx="12" ry="7" fill="#FF8CA3" opacity="0.8"/>
-                            <!-- Nose & Mouth -->
-                            <ellipse cx="100" cy="102" rx="7" ry="5" fill="#2E2E38"/>
-                            <path d="M93,110 Q100,116 107,110" fill="none" stroke="#2E2E38" stroke-width="3" stroke-linecap="round"/>
-                            
-                            <!-- Body & Paws -->
-                            <ellipse cx="100" cy="175" rx="60" ry="50" fill="#FFFFFF" stroke="#EAEAEA" stroke-width="2"/>
-                            <!-- Arms holding the sign -->
-                            <ellipse cx="48" cy="160" rx="18" ry="12" fill="#2E2E38" transform="rotate(-20 48 160)"/>
-                            <ellipse cx="152" cy="160" rx="18" ry="12" fill="#2E2E38" transform="rotate(20 152 160)"/>
-                        </svg>
+                        <img src="assets/panda/panda1.svg" class="panda-svg gateway-panda-svg" alt="Panda">
 
                         <!-- The "CLICK ME 💕" Board -->
                         <div id="click-me-board" class="click-me-board">
