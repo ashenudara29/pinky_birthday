@@ -1179,12 +1179,17 @@ body {
     justify-content: center;
     align-items: center;
     width: 100%;
+    position: relative;
+    z-index: 50;
 }
 
 .passcode-card {
     padding: 36px 20px 32px 20px;
     max-width: 360px;
     margin: 0 auto;
+    position: relative;
+    z-index: 100;
+    pointer-events: auto !important;
 }
 
 .passcode-header {

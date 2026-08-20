@@ -875,11 +875,21 @@ function initPasscodeGate() {
     enteredPasscode = "";
     updatePasscodeDots();
 
-    // Attach click events to numpad buttons
+    // Attach touch, pointer, & click events to numpad buttons with mobile touch optimization
     const numpadButtons = document.querySelectorAll('.numpad-btn');
     numpadButtons.forEach(btn => {
-        btn.addEventListener('click', (e) => {
-            e.preventDefault();
+        let lastTriggerTime = 0;
+
+        const processPress = (e) => {
+            if (e) {
+                if (e.cancelable) e.preventDefault();
+                e.stopPropagation();
+            }
+
+            const now = Date.now();
+            if (now - lastTriggerTime < 150) return; // Prevent double triggers
+            lastTriggerTime = now;
+
             const val = btn.getAttribute('data-val');
             const action = btn.getAttribute('data-action');
 
@@ -890,12 +900,17 @@ function initPasscodeGate() {
             } else if (action === 'submit') {
                 verifyPasscode();
             }
-        });
+        };
+
+        btn.addEventListener('pointerdown', processPress, { passive: false });
+        btn.addEventListener('touchstart', processPress, { passive: false });
+        btn.addEventListener('click', processPress);
     });
 
     // Support physical keyboard typing
     document.addEventListener('keydown', (e) => {
-        if (!elements.stepPasscode || elements.stepPasscode.classList.contains('hidden')) return;
+        const stepPasscode = document.getElementById('step-passcode');
+        if (!stepPasscode || stepPasscode.classList.contains('hidden')) return;
 
         if (e.key >= '0' && e.key <= '9') {
             appendPasscodeDigit(e.key);
@@ -911,7 +926,8 @@ function appendPasscodeDigit(digit) {
     if (enteredPasscode.length < 6) {
         enteredPasscode += digit;
         updatePasscodeDots();
-        if (elements.passcodeError) elements.passcodeError.classList.add('hidden');
+        const passcodeError = document.getElementById('passcode-error');
+        if (passcodeError) passcodeError.classList.add('hidden');
 
         // Auto verify when 6 digits entered
         if (enteredPasscode.length === 6) {
@@ -926,21 +942,22 @@ function deletePasscodeDigit() {
     if (enteredPasscode.length > 0) {
         enteredPasscode = enteredPasscode.slice(0, -1);
         updatePasscodeDots();
-        if (elements.passcodeError) elements.passcodeError.classList.add('hidden');
+        const passcodeError = document.getElementById('passcode-error');
+        if (passcodeError) passcodeError.classList.add('hidden');
     }
 }
 
 function updatePasscodeDots() {
-    if (!elements.pinDots) return;
-    elements.pinDots.forEach((dot, index) => {
+    for (let i = 0; i < 6; i++) {
+        const dot = document.getElementById(`pin-dot-${i}`);
         if (dot) {
-            if (index < enteredPasscode.length) {
+            if (i < enteredPasscode.length) {
                 dot.classList.add('filled');
             } else {
                 dot.classList.remove('filled');
             }
         }
-    });
+    }
 }
 
 function verifyPasscode() {
