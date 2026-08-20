@@ -73,22 +73,22 @@ Your Bubu ❤️`,
     memories: [
         {
             type: "image",
-            src: "assets/photos/photo1.png",
+            src: "assets/photos/photo1.jpeg",
             caption: "Our happy moments together ❤️"
         },
         {
             type: "image",
-            src: "assets/photos/photo2.jpeg",
+            src: "assets/photos/photo2.jpg",
             caption: "That sweet, beautiful smile 💕"
         },
         {
             type: "image",
-            src: "assets/photos/photo3.jpeg",
+            src: "assets/photos/photo3.jpg",
             caption: "Making memories together 💖"
         },
         {
             type: "image",
-            src: "assets/photos/photo4.jpeg",
+            src: "assets/photos/photo4.jpg",
             caption: "Forever & Always 💕"
         }
     ]
