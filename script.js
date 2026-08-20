@@ -25,7 +25,7 @@ const CONFIG = {
     birthdayMessage: "<span class=\"title-main\">Happy Birthday My Love...</span><br><span class=\"title-sub\">i love you more than my world 🌍💕😘🫶</span>",
 
     // Path to background music file
-    music: "assets/musics/looplove.mp3?v=2.0",
+    music: "assets/musics/looplove.mp3?v=3.0",
 
     // Love Letter text content
     // Replace "MY_LOVE_LETTER_HERE" or edit the string below to insert your own letter
